@@ -24,7 +24,7 @@ class ArrayForExercices{
         console.log("Nombre de comparaisons réalisées : " + this.counter_exo1) 
         break;
       case "exo3":
-        console.log("Contient deux nombres dont l'addition est égale à  " + this.k + " : " + this.exo3(this.array_sorted))
+        console.log("Contient deux nombres dont l'addition est égale à  " + this.k + " : " + this.exo3(this.array_sorted, this.k))
         console.log("Nombre de comparaisons réalisées : " + this.counter_exo3) 
         break;
       case "exo2":
@@ -38,11 +38,10 @@ class ArrayForExercices{
     
   }
 
-  exo1(arr,k){
+  exo1(arr, k){
     let l = arr.length;
     for (let i = 0 ; i < l; i++) {
       for (let j = i; j < arr.length; j++){
-        // console.log("résultats de "+ arr[i] + " + " + arr[j] +" = " + (arr[i] + arr[j]))
         if (arr[i] + arr[j] == k) return true;
         this.counter_exo1++ ;
       }      
@@ -50,10 +49,11 @@ class ArrayForExercices{
     return false;
   }
   exo2(arr) {
+    let l = arr.length;
     let buildings = new Array();
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < l; i++) {
       let verif = true;
-      for (let j = i + 1; j < arr.length; j++) {
+      for (let j = i + 1; j < l; j++) {arr.length
         if (arr[j] > arr[i]) {
         verif = false; 
         }
@@ -66,13 +66,12 @@ class ArrayForExercices{
     return buildings;
   };
 
-  exo3(arr){
-    
-    for (let i = 0; i < arr.length - 1; i++) {
+  exo3(arr,k){
+    let l = arr.length;
+    for (let i = 0; i < l - 1; i++) {
       this.counter_exo3++ ;
-      if (arr.includes(this.k - arr[i])) return true;
+      if (arr.includes(k - arr[i])) return true;
     }
-
     return false;   
   }
 }
