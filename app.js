@@ -15,9 +15,11 @@ function start(){
     let fileName = "";
     switch(result.exercice){
       case "1":
+      case "3":
         fileName = "./data_sujet1.txt";
         break;
       case "2":
+      case "4":
         fileName = "./data_sujet2.txt"
         break;
       default:
@@ -38,10 +40,10 @@ function start(){
           exercice.display("exo2")
           break;
         case "3":
-          exercice.display("exo1")
+          exercice.display("exo3")
           break;
         case "4":
-          exercice.display("exo2")
+          exercice.display("exo4")
           break;
         default:
           console.log("Désolé cette option n'est pas fonctionnelle")

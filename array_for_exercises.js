@@ -4,6 +4,7 @@ class ArrayForExercices{
     this.array_sorted = new Array()
     this.counter_exo1 = 0;
     this.counter_exo2 = 0;
+    this.counter_exo3 = 0;
     this.k = k
     let init = this.init()
   }
@@ -11,7 +12,7 @@ class ArrayForExercices{
   init(){
     this.array_of_numbers = this.array_of_strings.split(' ').map(element => parseInt(element))
     this.array_of_numbers.forEach(element => { this.array_sorted.push(element) });
-    this.exo1(this.array_sorted, this.array_sorted.length, this.k)
+    this.exo1(this.array_sorted, this.k)
     this.exo2(this.array_sorted)
   }
 
@@ -19,10 +20,15 @@ class ArrayForExercices{
     console.log("Tableau de données : " + this.array_of_numbers)
     switch (exo) {
       case "exo1":
-        console.log("Contient deux nombres dont l'addition est égale à  " + this.k + " : " + this.exo1(this.array_sorted, this.array_sorted.length, this.k))
+        console.log("Contient deux nombres dont l'addition est égale à  " + this.k + " : " + this.exo1(this.array_sorted, this.k))
         console.log("Nombre de comparaisons réalisées : " + this.counter_exo1) 
         break;
+      case "exo3":
+        console.log("Contient deux nombres dont l'addition est égale à  " + this.k + " : " + this.exo3(this.array_sorted))
+        console.log("Nombre de comparaisons réalisées : " + this.counter_exo3) 
+        break;
       case "exo2":
+      case "exo4":
         console.log("Contient " + this.exo2(this.array_sorted).length + " immeubles ayant au moins un appartement avec une vue sur le soleil :-) " + this.exo2(this.array_sorted))
         console.log("Nombre de comparaisons réalisées : " + this.counter_exo2) 
         break;
@@ -32,7 +38,8 @@ class ArrayForExercices{
     
   }
 
-  exo1(arr,l,k){
+  exo1(arr,k){
+    let l = arr.length;
     for (let i = 0 ; i < l; i++) {
       for (let j = i; j < arr.length; j++){
         // console.log("résultats de "+ arr[i] + " + " + arr[j] +" = " + (arr[i] + arr[j]))
@@ -61,8 +68,13 @@ class ArrayForExercices{
 
   exo3(arr){
     
+    for (let i = 0; i < arr.length - 1; i++) {
+      this.counter_exo3++ ;
+      if (arr.includes(this.k - arr[i])) return true;
+    }
+
+    return false;   
   }
-  
 }
 
 module.exports = ArrayForExercices
