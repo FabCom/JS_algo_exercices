@@ -5,6 +5,7 @@ class ArrayForExercices{
     this.counter_exo1 = 0;
     this.counter_exo2 = 0;
     this.counter_exo3 = 0;
+    this.counter_exo4 = 0;
     this.k = k
     let init = this.init()
   }
@@ -12,8 +13,6 @@ class ArrayForExercices{
   init(){
     this.array_of_numbers = this.array_of_strings.split(' ').map(element => parseInt(element))
     this.array_of_numbers.forEach(element => { this.array_sorted.push(element) });
-    this.exo1(this.array_sorted, this.k)
-    this.exo2(this.array_sorted)
   }
 
   display(exo){
@@ -31,9 +30,12 @@ class ArrayForExercices{
         console.log("Nombre de comparaisons réalisées : " + this.counter_exo3) 
         break;
       case "exo2":
-      case "exo4":
         console.log("Contient " + this.exo2(this.array_sorted).length + " immeubles ayant au moins un appartement avec une vue sur le soleil :-) " + this.exo2(this.array_sorted))
         console.log("Nombre de comparaisons réalisées : " + this.counter_exo2) 
+        break;
+      case "exo4":
+        console.log("Contient " + this.exo4(this.array_sorted).length + " immeubles ayant au moins un appartement avec une vue sur le soleil :-) " + this.exo4(this.array_sorted))
+        console.log("Nombre de comparaisons réalisées : " + this.counter_exo4) 
         break;
       default:
         break;
@@ -76,6 +78,13 @@ class ArrayForExercices{
       if (arr.includes(k - arr[i])) return true;
     }
     return false;   
+  }
+
+  exo4(arr, i = arr.length - 1) {  
+    if (arr.filter((e, j) => e > arr[i] && j > i).length > 0) arr.splice(i, 1);
+    if (i === 0) return arr;
+    this.counter_exo4++ ;
+    return this.exo4(arr, i - 1);
   }
 
 }
