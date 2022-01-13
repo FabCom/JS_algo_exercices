@@ -18,6 +18,9 @@ class ArrayForExercices{
 
   display(exo){
     console.log("Tableau de données : " + this.array_of_numbers)
+    console.log("1 : exercice 1 le tableau contient-il deux nombres dont l'addition ")
+    console.log("Tableau de données : " + this.array_of_numbers)
+
     switch (exo) {
       case "exo1":
         console.log("Contient deux nombres dont l'addition est égale à  " + this.k + " : " + this.exo1(this.array_sorted, this.k))
@@ -73,6 +76,12 @@ class ArrayForExercices{
       if (arr.includes(k - arr[i])) return true;
     }
     return false;   
+  }
+
+  ex4(arr, i = arr.length - 1) {
+    if (arr.filter((e, j) => e > arr[i] && j > i).length > 0) arr.splice(i, 1);
+    if (i === 0) return arr.length;
+    return ex4(arr, i - 1);
   }
 }
 
