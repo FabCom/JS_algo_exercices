@@ -78,11 +78,6 @@ class ArrayForExercices{
     return false;   
   }
 
-  ex4(arr, i = arr.length - 1) {
-    if (arr.filter((e, j) => e > arr[i] && j > i).length > 0) arr.splice(i, 1);
-    if (i === 0) return arr.length;
-    return ex4(arr, i - 1);
-  }
 }
 
 module.exports = ArrayForExercices
